@@ -73,13 +73,12 @@ def predict(model, data_loader, device):
     return results
 
 def visualize(img, pred_mask):
-    # img.squeeze(0) передается потому, что img может иметь размерность со встроенным batch размером из-за загрузки DataLoader'ом
     img = img.squeeze() if img.ndim > 2 else img  # Удаление канальной оси, если она присутствует
     fig, ax = plt.subplots(1, 2)
     ax[0].imshow(img, cmap='bone')
     ax[0].title.set_text('Original Image')
     ax[1].imshow(img, cmap='bone')
-    ax[1].imshow(np.ma.masked_where(pred_mask == 0, pred_mask), alpha=0.5, cmap='jet')  # Не нужно изменять размер mask
+    ax[1].imshow(np.ma.masked_where(pred_mask == 0, pred_mask), alpha=0.5, cmap='jet')  
     ax[1].title.set_text('Segmentation')
     plt.show()
     return fig
@@ -109,8 +108,8 @@ if uploaded_file is not None:
     if img_slice.ndim == 2:  # Если img_slice имеет два измерения, добавляем измерение канала
         img_slice = img_slice.unsqueeze(0)
     
-    # Убедимся, что img_slice имеет три измерения (канал, высоту и ширину), прежде чем добавить батч-размерность
-    img_slice = img_slice.unsqueeze(0)# Теперь img_slice имеет форму [1, 1, H, W] или [1, C, H, W]
+    
+    img_slice = img_slice.unsqueeze(0)
 
     single_slice_loader = DataLoader([img_slice], batch_size=1)
 
