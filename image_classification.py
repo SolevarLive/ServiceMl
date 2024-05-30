@@ -127,12 +127,6 @@ if uploaded_image is not None:
     fig = visualize(img_slice.squeeze().cpu().numpy(), pred_mask[0])
     st.pyplot(fig)
 
-    # --- Пример логики определения болезни (замени на свою) ---
-    # if np.any(pred_mask == 1): 
-    #     st.write("Обнаружены признаки болезни!")
-    # else:
-    #     st.write("Признаки болезни не обнаружены.")
-
     os.remove(tmp_image_file_path)
 
 # --- Раздел для расчёта Jaccard ---
