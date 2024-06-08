@@ -1,1 +1,3 @@
 torch
+nibabel
+segmentation_models_pytorch
