@@ -100,7 +100,7 @@ st.title('NIfTI Medical Image Analysis')
 # --- Раздел для проверки на болезнь ---
 st.header('Проверка на болезнь')
 uploaded_image = st.file_uploader("Загрузите изображение...", type="nii", key="disease-image")
-MODEL_PATH = 'C:/Users/sulpa/Desktop/model.ran/epoch_49.pth' #  ОБЯЗАТЕЛЬНО укажи свой путь!
+MODEL_PATH = 'epoch_49.pth'
 
 if uploaded_image is not None:
     with tempfile.NamedTemporaryFile(delete=False, suffix=".nii") as tmp_image_file:
